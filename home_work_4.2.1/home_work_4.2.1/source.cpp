@@ -41,21 +41,21 @@ public:
 	}
 
 	void add_element(int num) {
-		/*if (num >= size) {
-			std::cout << "Array is full. Cannot add more elements." << std::endl;
-		}*/
+		if (index == size) {
+			throw "Array is full. Cannot add more elements.";
+		}
 		arr[index] = num;
 		index++;
+		
 	}
 
 	int get_element(int num) {
 		//std::cout << "size = " << size << std::endl;
 		if (num >= size) {
-		//	throw "Index out of bounds.";
-			std::cout << "Error: Incorrect index" << std::endl;
+		throw "Index out of bounds.";
 		} 
 		else {
-			// std::cout << "Ïóê" << std::endl; 
+			// std::cout << "444" << std::endl; 
 			return arr[num];
 		}
 	}
@@ -112,17 +112,19 @@ int main()
 		arr.add_element(1);
 		arr.add_element(4);
 		arr.add_element(155);
-		//arr.add_element(14);
-		//arr.add_element(15);
+		arr.add_element(14);
+		arr.add_element(15);
+		//arr.add_element(111);
 
 		std::cout << arr.get_element(0) << std::endl;
 		std::cout << arr.get_element(1) << std::endl;
 		std::cout << arr.get_element(2) << std::endl;
 		std::cout << arr.get_element(3) << std::endl;
 		std::cout << arr.get_element(4) << std::endl;
+		//std::cout << arr.get_element(5) << std::endl;
 	}
-	catch (...) {
-
+	catch (const std::exception& ex) {
+		std::cout << "Exception: " << ex.what() << std::endl;
 	}
 
 	return 0;
