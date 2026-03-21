@@ -12,20 +12,27 @@ int main() {
 
 
     // Массив углов в радианах
-    std::vector<double> angles = { 0, 3.14 / 6, 3.14 / 4, 3.14 / 3, 3.14 / 2, 3.14 };
+    std::vector<float> angles = { 0, (3.14 / 6), (3.14 / 4), (3.14 / 3), (3.14 / 2), 3.14 };
 
     // Контейнер для хранения операций (лямбда-функций)
-    std::vector<std::function<void(double)>> functions;
+    std::vector<std::function<void(float)>> functions;
 
     // 1. Добавляем операцию вычисления синуса
-    functions.push_back([](double angle) {
+    functions.push_back([](float angle) {
         std::cout << " sin=" << std::setprecision(3) << std::sin(angle);
         });
 
     // 2. Добавляем операцию вычисления косинуса
-    functions.push_back([](double angle) {
+    functions.push_back([](float angle) {
         std::cout << " cos=" << std::setprecision(3) << std::cos(angle);
         });
+
+    std::cout << "Входные данные:  ";
+    for (float i : angles) {
+        std::cout << i << " ";
+    }
+
+    std::cout << std::endl;
 
     // Вывод результатов
     std::cout << "Синусы и косинусы углов:" << std::endl;

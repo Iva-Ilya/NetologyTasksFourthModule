@@ -27,13 +27,6 @@ std::variant<int, std::string, std::vector<int>> get_variant() {
     return result;
 }
 
-
-
-
-
-
-
-
 int main()
 {
 	SetConsoleCP(1251);
@@ -45,7 +38,7 @@ int main()
 
     if (result.index() == 0) {
         int value = std::get<int>(result);
-        std::cout << "Результат int. Умножим на 2 " << value * 2 << std::endl;
+        std::cout << "Результат int. Умножим на 2 = " << value * 2 << std::endl;
     }
     else if (result.index() == 1) {
         std::string str = std::get<std::string>(result);
@@ -57,13 +50,14 @@ int main()
         for (int i : numbers) {
             std::cout << i << " ";
         }
+        std::cout << std::endl;
     }
 
-    std::cout << std::endl << std::endl;
+    std::cout << std::endl;
 
     // 2.Используем std::get_if (без исключений)
     if (int* int_value = std::get_if<int>(&result)) {
-        std::cout << "Результат int. Умножим на 2 " << *int_value << std::endl;
+        std::cout << "Результат int. Умножим на 2 = " << *int_value * 2 << std::endl;
     }
     // Пытаемся получить string
     else if (std::string* str_value = std::get_if<std::string>(&result)) {
