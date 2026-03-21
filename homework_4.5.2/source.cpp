@@ -69,14 +69,14 @@ int main()
 	}
 
 	// чтение и запись
-	std::cout << "table[1][2] = " << Table[1][2] << std::endl;
+	std::cout << "Before change: table[1][2] = " << Table[1][2] << std::endl;
 	Table[1][2] = 100;
-	std::cout << "after change: table[1][2] = " << Table[1][2] << std::endl;
+	std::cout << "After change: table[1][2] = " << Table[1][2] << std::endl;
 
 	
 
 	// вывод всей таблицы
-	std::cout << "\nfull table:" << std::endl;
+	std::cout << "\nFull table:" << std::endl;
 	for (int i = 0; i < 3; ++i) {
 		for (int j = 0; j < 4; ++j) {
 			std::cout << Table[i][j] << "\t";
@@ -89,11 +89,12 @@ int main()
 	auto size = Table.Size();
 	std::cout << "Table size: " << size.first << "x" << size.second << std::endl;
 
+	/*
 	// Работа с константной таблицей
 	const table<int>& const_table = Table;
 	std::cout << "\nConst access: " << const_table[1][2] << std::endl;
 	// const_table[0][0] = 10;  // Ошибка - константный оператор
-
+	*/
 
 	return 0;
 }
