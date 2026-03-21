@@ -6,6 +6,7 @@
 //		что с помощью тех или иных программных механизмов получение 
 //			некоторого ресурса неразрывно совмещается с инициализацией, а освобождение — с уничтожением объекта.
 
+/*
 // Как надо
 class Int {
 public:
@@ -32,6 +33,7 @@ private:
 	Int* data = nullptr;
 };
 //
+*/
 
 class smart_array {
 public:
@@ -50,12 +52,10 @@ public:
 	}
 
 	int get_element(int num) {
-		//std::cout << "size = " << size << std::endl;
 		if (num >= size) {
 		throw "Index out of bounds.";
 		} 
-		else {
-			// std::cout << "444" << std::endl; 
+		else { 
 			return arr[num];
 		}
 	}
@@ -77,6 +77,7 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
+	/*
 	// Как надо. Как только вышли за рамки блока кода {} - вызывается деструктор, который удаляет использованную динамическую память. 
 	// Вручную этого делать не приходится.
 	try
@@ -106,6 +107,7 @@ int main()
 	//
 
 	std::cout << std::endl << std::endl << std::endl;
+	*/
 
 	try {
 		smart_array arr(5);

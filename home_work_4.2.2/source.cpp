@@ -56,7 +56,7 @@ public:
 
 	~smart_array() {
 		delete[] arr;
-		std::cout << "~smart_array" << std::endl;
+		//std::cout << "~smart_array" << std::endl;
 	}
 private:
 	int* arr = nullptr;
@@ -80,12 +80,17 @@ int main()
 		new_array.add_element(44);
 		new_array.add_element(34);
 
+		std::cout << "Ïåğâûé ìàññèâ ÄÎ ";
 		arr1.print();
+		std::cout << "Âòîğîé ìàññèâ ÄÎ ";
 		new_array.print();
 
+		std::cout << std::endl;
 		arr1 = new_array;
 
+		std::cout << "Ïåğâûé ìàññèâ ÏÎÑËÅ ";
 		arr1.print();
+		std::cout << "Âòîğîé ìàññèâ ÏÎÑËÅ ";
 		new_array.print();
 	}
 	catch (const std::exception& ex) {
