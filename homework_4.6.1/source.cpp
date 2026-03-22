@@ -51,7 +51,7 @@ int main()
 	int i = 0;
 	for (char c : text) {
 		std::cout << frequency[c] << " ";
-		std::cout << "count" << count << std::endl;
+		std::cout << "count " << count << std::endl;
 		count++;
 		std::cout << frequency[i] << count << std::endl;
 		i++;
