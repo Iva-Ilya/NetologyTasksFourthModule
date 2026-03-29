@@ -1,68 +1,34 @@
 #include <iostream>
-#include <windows.h>
-#include <string>
 #include <map>
 #include <vector>
 #include <algorithm>
 
-/* STL(standart template library, стандартная библиотека шаблонов) — набор обобщённых алгоритмов,
-контейнеров, средств доступа к их содержимому и различных вспомогательных функций в C++. */
+struct CharCount {
+    char character;
+    int count;
+};
 
-/*
-STL разделяют на 4 блока:
-1)Контейнеры;
-2)Алгоритмы;
-3)Итераторы;
-4)Функторы;
-*/
+int main() {
+    std::string line{ "Hello world!!" };
+    std::cout << "[IN]: " << line << std::endl;
 
+    std::map<char, int> charCountMap;
+    for (char c : line) {
+        charCountMap[c]++;
+    }
 
+    std::vector<CharCount> charCountVector;
+    for (const std::pair<char, int>& pair : charCountMap) {
+        charCountVector.push_back({ pair.first, pair.second });
+    }
 
+    std::sort(charCountVector.begin(), charCountVector.end(), [](const CharCount& a, const CharCount& b) {
+        if (a.count > b.count) return true;
+        else return false;
+        });
 
-
-int main()
-{
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-
-	/*
-	Библиотека контейнеров является универсальной коллекцией шаблонов классов и алгоритмов, позволяющих программистам легко реализовывать общие
-	структуры данных, такие как очереди, списки и стеки.
-	*/
-	/*
-	Контейнеры разделят на 4 вида:
-	- Последовательные;
-	- Ассоциативные;
-	- Неупорядоченные ассоциативные;
-	- Адаптеры;
-	*/
-
-	std::string text = "Hello world!";
-
-	// Словарь для подсчета частоты символов
-	std::map<char, int> frequency;
-
-	// Подсчитываем частоту каждого символа
-	for (char c : text) {
-		frequency[c]++;
-	}
-	
-	int count = 0;
-	int i = 0;
-	for (char c : text) {
-		std::cout << frequency[c] << " ";
-		std::cout << "count " << count << std::endl;
-		count++;
-		std::cout << frequency[i] << count << std::endl;
-		i++;
-	}
-
-	for (const auto& pair : frequency) {
-		// Для наглядности показываем символ и частоту
-		std::cout << "'" << pair.first << "` " << pair.second;
-		std::cout << std::endl;
-	}
-
-
-	return 0;
+    std::cout << "[OUT]: " << std::endl;
+    for (const CharCount& pair : charCountVector) {
+        std::cout << pair.character << ": " << pair.count << std::endl;
+    }
 }
